@@ -1,0 +1,1 @@
+(function(){function t(){var n=document.querySelector("pwa-container-wrapper");n&&_w.sj_log&&sj_log("CI.SearchBoxIgnorePwaPlugin","SearchBoxIgnorePwaPlugin","Triggered")}var n=_ge("sb_form_q");sj_be(n,"focus",t);sj_be(n,"click",t)})()
