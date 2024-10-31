@@ -5,12 +5,17 @@ import { useDeleteEvaluationMutation, useGetEvaluationsQuery } from "../../store
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 
 const ListeEvaluation = () => {
-    const { data = [], isLoading } = useGetEvaluationsQuery();
+    const { data, isLoading } = useGetEvaluationsQuery();
     const [deleteEvaluation] = useDeleteEvaluationMutation();
-
+    console.log("data =>", data);
+    
     const handleDelete = async (id: number) => {
         if (window.confirm("Êtes-vous sûr de vouloir supprimer cette évaluation ?")) {
-            await deleteEvaluation(id).unwrap();
+            try {
+                await deleteEvaluation(id).unwrap();
+            } catch (error) {
+                alert("Erreur lors de la suppression du evaluation.");
+            }
         }
     };
 
@@ -40,7 +45,7 @@ const ListeEvaluation = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map((Evaluation) => (
+                                {data && data.map((Evaluation) => (
                                     <tr key={Evaluation.id}>
                                         <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                                             <h5 className="font-medium text-black dark:text-white">

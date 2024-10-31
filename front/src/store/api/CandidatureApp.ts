@@ -10,7 +10,7 @@ import { Candidature} from "../../interfaces/mainInterfaces";
 export const CandidatureApp = createApi({
 	reducerPath: "CandidatureApp",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${BACKEND_API_URL}api/Candidatures/`,
+		baseUrl: `${BACKEND_API_URL}api/candidatures/`,
 		// prepareHeaders: (headers) => {
 		// 	const user = localStorage.getItem("WD_USER");
 		// 	if (user) {
@@ -54,7 +54,7 @@ export const CandidatureApp = createApi({
 		}),
 
 		getCandidatures: builder.query<Candidature[], void>({
-			query: () => "all/",
+			query: () => "all",
 		}),
 
 	}),

@@ -28,7 +28,7 @@ export const MailApp = createApi({
 		CreateMail: builder.mutation({
 			query: (data: Omit<Mail, "id">) => {
 				return {
-					url: "",
+					url: `candidats/${data.id}`,
 					method: "POST",
 					body: data,
 				};
@@ -54,7 +54,7 @@ export const MailApp = createApi({
 		}),
 
 		getMails: builder.query<Mail[], void>({
-			query: () => "all/",
+			query: () => "all",
 		}),
 
 	}),

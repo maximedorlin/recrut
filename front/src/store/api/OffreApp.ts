@@ -54,7 +54,7 @@ export const OffreApp = createApi({
 		}),
 
 		getOffres: builder.query<Offre[], void>({
-			query: () => "all/",
+			query: () => "all",
 		}),
 
 	}),

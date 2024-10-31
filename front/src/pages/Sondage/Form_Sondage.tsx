@@ -16,11 +16,8 @@ const FormSondage = () => {
             .required("Ce champ est requis"),
         reponse: Yup.string()
             .required("Ce champ est requis"),
-        date: Yup.date()
-            .required("Ce champ est requis")
-            .nullable(),
-        reponseVrai: Yup.string() // Assuming this is meant to be a string for a valid response
-            .required("Ce champ est requis"),
+        reponseVrai: Yup.string()
+            .required("Ce champ est requis"), // Si c'est un booléen, changez-le en Yup.boolean()
     });
 
     const formik = useFormik({
@@ -29,16 +26,21 @@ const FormSondage = () => {
             titre: "",
             question: "",
             reponse: "",
-            reponseVrai: "", // Changed to string
+            reponseVrai: "",
         },
         validationSchema,
         onSubmit: async (values) => {
-            // const { id, ...data } = values; // Omit id for create
-            // if (id) {
-            //     await updateSondage(values).unwrap();
-            // } else {
-            //     await createSondage(data).unwrap();
-            // }
+            const { id, ...data } = values; // Omettre l'id pour la création
+            try {
+                if (id) {
+                    await updateSondage(values).unwrap();
+                } else {
+                    await createSondage(data).unwrap();
+                }
+            } catch (error) {
+                console.error("Erreur lors de la soumission:", error);
+                alert("Une erreur est survenue lors de la sauvegarde du sondage.");
+            }
         },
     });
 
@@ -50,17 +52,17 @@ const FormSondage = () => {
     }, [isCreateSuccess, isUpdateSuccess]);
 
     return (
-        <div className="grid grid-cols-1 gap-9 sm:grid-cols-1">
+        <div className="grid grid-cols-1 gap-9">
             <div className="flex flex-col gap-9">
-                <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                    <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
-                        <h3 className="font-medium text-black dark:text-white">Formulaire de Sondage</h3>
+                <div className="rounded-sm border border-stroke bg-white shadow-default">
+                    <div className="border-b border-stroke py-4 px-6">
+                        <h3 className="font-medium text-black">Formulaire de Sondage</h3>
                     </div>
                     <form onSubmit={formik.handleSubmit}>
-                        <div className="p-6.5">
-                            <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
+                        <div className="p-6">
+                            <div className="mb-4 flex flex-col gap-6 xl:flex-row">
                                 <div className="w-full xl:w-1/2">
-                                    <label className="mb-2.5 block text-black dark:text-white">Titre</label>
+                                    <label className="mb-2.5 block text-black">Titre</label>
                                     <input
                                         id="titre"
                                         type="text"
@@ -68,11 +70,11 @@ const FormSondage = () => {
                                         {...formik.getFieldProps('titre')}
                                         className={`w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary ${formik.touched.titre && formik.errors.titre ? 'border-red-500' : ''}`}
                                     />
-                                    {formik.touched.titre && formik.errors.titre && <p className="mt-1 text-m text-red-400">{formik.errors.titre}</p>}
+                                    {formik.touched.titre && formik.errors.titre && <p className="mt-1 text-red-400">{formik.errors.titre}</p>}
                                 </div>
 
                                 <div className="w-full xl:w-1/2">
-                                    <label className="mb-2.5 block text-black dark:text-white">Question</label>
+                                    <label className="mb-2.5 block text-black">Question</label>
                                     <input
                                         id="question"
                                         type="text"
@@ -80,13 +82,13 @@ const FormSondage = () => {
                                         {...formik.getFieldProps('question')}
                                         className={`w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary ${formik.touched.question && formik.errors.question ? 'border-red-500' : ''}`}
                                     />
-                                    {formik.touched.question && formik.errors.question && <p className="mt-1 text-m text-red-400">{formik.errors.question}</p>}
+                                    {formik.touched.question && formik.errors.question && <p className="mt-1 text-red-400">{formik.errors.question}</p>}
                                 </div>
                             </div>
 
-                            <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
+                            <div className="mb-4 flex flex-col gap-6 xl:flex-row">
                                 <div className="w-full xl:w-1/2">
-                                    <label className="mb-2.5 block text-black dark:text-white">Réponse</label>
+                                    <label className="mb-2.5 block text-black">Réponse</label>
                                     <input
                                         id="reponse"
                                         type="text"
@@ -94,11 +96,11 @@ const FormSondage = () => {
                                         {...formik.getFieldProps('reponse')}
                                         className={`w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary ${formik.touched.reponse && formik.errors.reponse ? 'border-red-500' : ''}`}
                                     />
-                                    {formik.touched.reponse && formik.errors.reponse && <p className="mt-1 text-m text-red-400">{formik.errors.reponse}</p>}
+                                    {formik.touched.reponse && formik.errors.reponse && <p className="mt-1 text-red-400">{formik.errors.reponse}</p>}
                                 </div>
 
                                 <div className="w-full xl:w-1/2">
-                                    <label className="mb-2.5 block text-black dark:text-white">Réponse Vraie</label>
+                                    <label className="mb-2.5 block text-black">Réponse Vraie</label>
                                     <input
                                         id="reponseVrai"
                                         type="text"
@@ -106,7 +108,7 @@ const FormSondage = () => {
                                         {...formik.getFieldProps('reponseVrai')}
                                         className={`w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary ${formik.touched.reponseVrai && formik.errors.reponseVrai ? 'border-red-500' : ''}`}
                                     />
-                                    {formik.touched.reponseVrai && formik.errors.reponseVrai && <p className="mt-1 text-m text-red-400">{formik.errors.reponseVrai}</p>}
+                                    {formik.touched.reponseVrai && formik.errors.reponseVrai && <p className="mt-1 text-red-400">{formik.errors.reponseVrai}</p>}
                                 </div>
                             </div>
 

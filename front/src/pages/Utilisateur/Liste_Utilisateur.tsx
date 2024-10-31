@@ -7,13 +7,14 @@ import { useDeleteUserMutation, useGetUsersQuery } from '../../store/api/UserApp
 
 
 const Liste_Utilisateure = () => {
-  const { data = [], isLoading } = useGetUsersQuery();
+  const { data, isLoading } = useGetUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
   const [openDialog, setOpenDialog] = useState(false);
   const [userToDelete, setUserToDelete] = useState<User | null>(null);
-
-  const handleDeleteUser = async (idUser: number) => {
-    await deleteUser(idUser);
+  console.log("data =>", data);
+  
+  const handleDeleteUser = async (id: number) => {
+    await deleteUser(id);
     setOpenDialog(false);
   };
 
@@ -43,7 +44,7 @@ const Liste_Utilisateure = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((user: User, index) => (
+                {data && data.map((user: User, index) => (
                   <tr key={index}>
                     <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                       <h5 className="font-medium text-black dark:text-white">{user.username}</h5>

@@ -25,7 +25,7 @@ export const CompetenceApp = createApi({
 
 	endpoints: (builder) => ({
 		CreateCompetence: builder.mutation({
-			query: (data: Omit<Competence, "idCompetence">) => {
+			query: (data: Omit<Competence, "id">) => {
 				return {
 					url: "",
 					method: "POST",
@@ -47,14 +47,14 @@ export const CompetenceApp = createApi({
 		DeleteCompetence: builder.mutation({
 			query: (idCompetence: number) => {
 				return {
-					url: `${idCompetence}/`,
+					url: `${id}/`,
 					method: "DELETE",
 				};
 			},
 		}),
 
 		getCompetences: builder.query<Competence[], void>({
-			query: () => "all/",
+			query: () => "all",
 		}),
 
 		getCompetenceById: builder.query<Competence, number>({

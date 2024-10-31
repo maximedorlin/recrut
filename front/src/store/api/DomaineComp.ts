@@ -54,7 +54,7 @@ export const DomaineCompApp = createApi({
 		}),
 
 		getDomaineComps: builder.query<DomaineComp[], void>({
-			query: () => "all/",
+			query: () => "all",
 		}),
 	}),
 });

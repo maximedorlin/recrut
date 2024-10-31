@@ -5,9 +5,10 @@ import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 import { useDeleteMailMutation, useGetMailsQuery } from "../../store/api/MailApi";
 
 const ListeMails = () => {
-    const { data = [], isLoading } = useGetMailsQuery();
+    const { data, isLoading } = useGetMailsQuery();
     const [deleteMail] = useDeleteMailMutation();
-
+    console.log("data =>", data);
+    
     const handleDelete = async (id: number) => {
         if (window.confirm("Êtes-vous sûr de vouloir supprimer ce mail ?")) {
             try {
@@ -51,7 +52,7 @@ const ListeMails = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map((mail) => (
+                                {data && data.map((mail) => (
                                     <tr key={mail.id}>
                                         <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark">
                                             <h5 className="font-medium text-black dark:text-white">

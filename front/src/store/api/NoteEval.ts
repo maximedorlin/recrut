@@ -10,7 +10,7 @@ import { NoteEval} from "../../interfaces/mainInterfaces";
 export const NoteEvalApp = createApi({
 	reducerPath: "NoteEvalApp",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${BACKEND_API_URL}api/`,
+		baseUrl: `${BACKEND_API_URL}api/noteEvals/`,
 		// prepareHeaders: (headers) => {
 		// 	const user = localStorage.getItem("WD_USER");
 		// 	if (user) {
@@ -28,7 +28,7 @@ export const NoteEvalApp = createApi({
 		CreateNoteEval: builder.mutation({
 			query: (data: Omit<NoteEval, "id">) => {
 				return {
-					url: "NoteEvals/",
+					url: "",
 					method: "POST",
 					body: data,
 				};
@@ -37,7 +37,7 @@ export const NoteEvalApp = createApi({
 		UpdateNoteEval: builder.mutation({
 			query: (data: NoteEval) => {
 				return {
-					url: `NoteEvals/${data.id}/`,
+					url: `${data.id}/`,
 					method: "PUT",
 					body: data,
 				};
@@ -45,20 +45,20 @@ export const NoteEvalApp = createApi({
 		}),
 
 		DeleteNoteEval: builder.mutation({
-			query: (idNoteEval: number) => {
+			query: (id: number) => {
 				return {
-					url: `NoteEvals/${idNoteEval}/`,
+					url: `${id}/`,
 					method: "DELETE",
 				};
 			},
 		}),
 
 		getNoteEvals: builder.query<NoteEval[], void>({
-			query: () => "NoteEvals/",
+			query: () => "/all",
 		}),
 
 		getNoteEvalById: builder.query<NoteEval, number>({
-			query: (idNoteEval) => `NoteEvals/${idNoteEval}/`,
+			query: (id) => `${id}/`,
 		  }),
 
 

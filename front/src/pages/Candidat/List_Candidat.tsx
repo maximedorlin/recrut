@@ -6,20 +6,25 @@ import { useState } from "react";
 import { useDeleteCandidatMutation, useGetCandidatsQuery } from "../../store/api/CandidatApp";
 
 const ListeCandidat = () => {
-    const { data = [], isLoading } = useGetCandidatsQuery();
+    const { data, isLoading } = useGetCandidatsQuery();
     const [deleteCandidat] = useDeleteCandidatMutation();
     const [searchTerm, setSearchTerm] = useState("");
-
+    console.log("data =>", data);
+    
     const handleDelete = async (id: number) => {
         if (window.confirm("Êtes-vous sûr de vouloir supprimer ce Candidat ?")) {
-            await deleteCandidat(id).unwrap();
+            try {
+                await deleteCandidat(id).unwrap();
+            } catch (error) {
+                alert("Erreur lors de la suppression du candidat.");
+            }
         }
     };
 
-    const filteredCandidats = data.filter((Candidat) => 
-        Candidat.anneeExperience.toString().includes(searchTerm) ||
-        Candidat.modalite.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    //const filteredCandidats = data.filter((Candidat) =>
+        //Candidat.anneeExperience.toString().includes(searchTerm) ||
+       // Candidat.modalite.toLowerCase().includes(searchTerm.toLowerCase())
+    //);
 
     return (
         <>
@@ -27,12 +32,12 @@ const ListeCandidat = () => {
             <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
                 <div className="max-w-full overflow-x-auto">
                     <h2 className='text-center mb-4'>Liste de Candidats</h2>
-                    <input 
-                        type="search" 
-                        className="mb-4 p-2 border rounded" 
-                        placeholder="Rechercher..." 
-                        value={searchTerm} 
-                        onChange={(e) => setSearchTerm(e.target.value)} 
+                    <input
+                        type="search"
+                        className="mb-4 p-2 border rounded"
+                        placeholder="Rechercher..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     {isLoading ? (
                         <h1>Loading...</h1>
@@ -55,7 +60,7 @@ const ListeCandidat = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {filteredCandidats.map((Candidat) => (
+                                {data && data.map((Candidat) => (
                                     <tr key={Candidat.id}>
                                         <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                                             <h5 className="font-medium text-black dark:text-white">

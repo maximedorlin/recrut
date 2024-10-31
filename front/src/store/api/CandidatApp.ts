@@ -10,7 +10,7 @@ import { Candidat} from "../../interfaces/mainInterfaces";
 export const CandidatApp = createApi({
 	reducerPath: "CandidatApp",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${BACKEND_API_URL}api/`,
+		baseUrl: `${BACKEND_API_URL}api/candidats`,
 		// prepareHeaders: (headers) => {
 		// 	const user = localStorage.getItem("WD_USER");
 		// 	if (user) {
@@ -28,7 +28,7 @@ export const CandidatApp = createApi({
 		CreateCandidat: builder.mutation({
 			query: (data: Omit<Candidat, "id">) => {
 				return {
-					url: "Candidats/",
+					url: "",
 					method: "POST",
 					body: data,
 				};
@@ -37,7 +37,7 @@ export const CandidatApp = createApi({
 		UpdateCandidat: builder.mutation({
 			query: (data: Candidat) => {
 				return {
-					url: `Candidats/${data.id}/`,
+					url: `${data.id}/`,
 					method: "PUT",
 					body: data,
 				};
@@ -47,14 +47,14 @@ export const CandidatApp = createApi({
 		DeleteCandidat: builder.mutation({
 			query: (id: number) => {
 				return {
-					url: `Candidats/${id}/`,
+					url: `${id}/`,
 					method: "DELETE",
 				};
 			},
 		}),
 
 		getCandidats: builder.query<Candidat[], void>({
-			query: () => "Candidats/",
+			query: () => "/all",
 		}),
 	}),
 });

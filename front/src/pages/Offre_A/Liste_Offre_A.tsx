@@ -9,6 +9,7 @@ import { Offre } from '../../interfaces/mainInterfaces';
 const ListeOffreA = () => {
     const { data, isSuccess } = useGetOffresQuery();
     const [offres, setOffres] = useState<Offre[]>([]);
+    console.log("data =>", data);
 
     useEffect(() => {
         if (isSuccess) {
@@ -34,7 +35,7 @@ const ListeOffreA = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {offres.map((offre) => (
+                            {data && data.map((offre) => (
                                 <tr key={offre.id}>
                                     <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                                         <h5 className="font-medium text-black dark:text-white">{offre.titreOffre}</h5>

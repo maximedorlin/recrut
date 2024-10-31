@@ -58,6 +58,7 @@ export interface Mail {
 	typeMail: string;
 	descriptionMail: string;
 	contenuMail: string;
+	Candidat: unknown[];
 }
 
 //interface sondage

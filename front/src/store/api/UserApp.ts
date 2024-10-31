@@ -55,7 +55,7 @@ export const UserApp = createApi({
 		}),
 
 		getUsers: builder.query<User[], void>({
-			query: () => "all/",
+			query: () => "all",
 		}),
 	}),
 });

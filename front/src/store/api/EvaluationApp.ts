@@ -55,7 +55,7 @@ export const EvaluationApp = createApi({
 
 
 		getEvaluations: builder.query<Evaluation[], void>({
-			query: () => "all/",
+			query: () => "all",
 		}),
 
 	}),
