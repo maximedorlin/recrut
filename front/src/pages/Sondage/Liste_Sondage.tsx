@@ -3,7 +3,6 @@
 import { Link } from "react-router-dom";
 import { useDeleteSondageMutation, useGetSondagesQuery } from "../../store/api/SondageApp";
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
-import { Sondage } from "../../interfaces/mainInterfaces";
 
 const ListeSondage = () => {
     const { data, isLoading } = useGetSondagesQuery();

@@ -26,8 +26,6 @@ import Postuler from './pages/Accueil/Postuler.tsx';
 import Form_Offre_A from './pages/Offre_A/Form_Offre_A.tsx';
 import Liste_Offre_A from './pages/Offre_A/Liste_Offre_A.tsx';
 import Mes_Infos from './pages/Candidat/Mes_Infos.tsx';
-import SignUp from './pages/Login/Deconnecter.tsx';
-import Deconnecter from './pages/Login/Deconnecter.tsx';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -272,15 +270,6 @@ function App() {
           <>
             <PageTitle title="Settings | AFT_RECRUTEMENT" />
             <Settings />
-          </>
-        }
-      />
-      <Route
-        path="Deconnecter"
-        element={
-          <>
-            <PageTitle title="Deconnecter | AFT_RECRUTEMENT" />
-            <Deconnecter />
           </>
         }
       />

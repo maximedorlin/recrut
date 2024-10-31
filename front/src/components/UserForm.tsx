@@ -27,7 +27,8 @@ const UserForm = () => {
 			username: "",
 			email: "",
 			password: "",
-			status: [],
+			role: [],
+			id: 0
 		},
 		validationSchema: validationSchema,
 		onSubmit: (values: Omit<User, "idUser">) => handleSubmit(values),
@@ -86,14 +87,14 @@ const UserForm = () => {
 							type="text"
 							id="email"
 							className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${
-								formik.errors?.status
+								formik.errors?.role
 									? "border-red-500"
 									: "border-red-500stroke"
 							}`}
 							placeholder="status"
 						/>
-						{formik.errors.status && (
-							<p className="text-red-500 text-sm">{formik.errors.status}</p>
+						{formik.errors.role && (
+							<p className="text-red-500 text-sm">{formik.errors.role}</p>
 						)}
 					</div>
 				</div>
