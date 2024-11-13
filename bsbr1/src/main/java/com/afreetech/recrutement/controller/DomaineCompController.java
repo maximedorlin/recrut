@@ -1,5 +1,6 @@
 package com.afreetech.recrutement.controller;
 
+import java.lang.module.ResolutionException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.afreetech.recrutement.entity.DomaineComp;
 import com.afreetech.recrutement.service.DomaineCompService;
-import com.afreetech.recrutement.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/domaineComps")
 public class DomaineCompController {
@@ -44,7 +43,7 @@ public class DomaineCompController {
         try {
             DomaineComp domaineComp = domaineCompService.getDomaineCompById(id);
             return new ResponseEntity<>(domaineComp, HttpStatus.OK);
-        } catch (ResourceNotFoundException e) {
+        } catch (ResolutionException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); 
@@ -68,7 +67,7 @@ public class DomaineCompController {
         try {
             DomaineComp updatedDomaineComp = domaineCompService.updateDomaineComp(id, domaineCompRequest);
             return new ResponseEntity<>(updatedDomaineComp, HttpStatus.OK);
-        } catch (ResourceNotFoundException e) {
+        } catch (ResolutionException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -80,22 +79,22 @@ public class DomaineCompController {
         try {
             domaineCompService.deleteDomaineComp(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ResourceNotFoundException e) {
+        } catch (ResolutionException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @DeleteMapping("/offres/{offreId}")
-    public ResponseEntity<HttpStatus> deleteAllDomaineCompsOfOffre(@PathVariable(value = "offreId") Long offreId) {
-        try {
-            domaineCompService.deleteAllDomaineCompsOfOffre(offreId);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ResourceNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    // @DeleteMapping("/offres/{offreId}")
+    // public ResponseEntity<HttpStatus> deleteAllDomaineCompsOfOffre(@PathVariable(value = "offreId") Long offreId) {
+    //     try {
+    //         domaineCompService.deleteAllDomaineCompsOfOffre(offreId);
+    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    //     } catch (ResolutionException e) {
+    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
+    // }
 }

@@ -1,11 +1,16 @@
 package com.afreetech.recrutement.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "rct_competence")
 public class Competence {
 
@@ -20,57 +25,15 @@ public class Competence {
     @Column(name = "description", nullable = false)
     private String description;
 
-    // Constructeur par défaut
-    public Competence() {
-        // Constructeur vide
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "domaine_id", nullable = false)
+    @JsonIgnore
+    private DomaineComp domaineComp;
 
-    // Constructeur avec paramètres
+    // Constructor for easier creation
     public Competence(String titre, String description, DomaineComp domaineComp) {
         this.titre = titre;
         this.description = description;
         this.domaineComp = domaineComp;
     }
-
-    // Getters et Setters
-    public Long getid() {
-        return id;
-    }
-
-    public void setid(Long id) {
-        this.id = id;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false )
-    @JoinColumn(name = "domaine_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private DomaineComp domaineComp;
-    
-    public DomaineComp getDomaineComp() {
-      return domaineComp;
-    }
-  
-    public void setDomaineComp(DomaineComp domaineComp) {
-      this.domaineComp = domaineComp;
-    }
-
-
 }

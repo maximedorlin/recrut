@@ -1,31 +1,26 @@
 import { useEffect, useState } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import {Route, Routes, useLocation } from 'react-router-dom';
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import Connection from './pages/Login/Connection';
 import DefaultLayout from './layout/DefaultLayout';
 import Settings from './pages/Settings';
 import Form_Utilisateur from './pages/Utilisateur/Form_Utilisateur';
-import Form_Sondage from './pages/Sondage/Form_Sondage';
-import Liste_Sondage from './pages/Sondage/Liste_Sondage';
-import Form_Evaluation from './pages/Evaluation/Form_Evaluation';
 import Liste_Utilisateure from './pages/Utilisateur/Liste_Utilisateur';
-import Liste_Candidat from './pages/Candidat/List_Candidat';
+import Liste_Candidature from './pages/Candidature/List_Candidature.tsx';
 import Accueil from './pages/Accueil/Accueil';
 import Accueil_d from './pages/Dashboard/Accueil_d';
 import Connection_Cand from './pages/Login/Connection_Cand';
-import Profil from './pages/Candidat/Profil';
+import Profil from './pages/Candidature/Profil.tsx';
 import P404 from './pages/erreur/404';
-import Liste_Evaluation from './pages/Evaluation/Liste_Evaluation';
-import Liste_Mail from './pages/Mail/Liste_Mail';
-import Form_Mail from './pages/Mail/Form_Mail';
-import Form_Question from './pages/Evaluation/question.tsx';
 import Compte from './pages/Accueil/Compte.tsx';
 import ForgotPassword from './pages/Accueil/ForgotPosword.tsx';
-import Postuler from './pages/Accueil/Postuler.tsx';
-import Form_Offre_A from './pages/Offre_A/Form_Offre_A.tsx';
-import Liste_Offre_A from './pages/Offre_A/Liste_Offre_A.tsx';
-import Mes_Infos from './pages/Candidat/Mes_Infos.tsx';
+import Postuler from './pages/Accueil/Candidature.tsx';
+import Form_Offre_A from './pages/Offre_Emploi/Form_Offre_Emploi.tsx';
+import Liste_Offre_A from './pages/Offre_Emploi/Liste_Offre_Emploi.tsx';
+import Mes_Infos from './pages/Candidature/Mes_Infos.tsx';
+import Liste_Question from './pages/Question/Liste_Question.tsx';
+import Form_Question from './pages/Question/Form_Question.tsx';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -46,53 +41,88 @@ function App() {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/" element={<Navigate to="/web" />} />
-      <Route path="/web" element={<Accueil />} />
-      <Route path="login" element={<Connection
-      //  onLogin={undefined} 
-      />} />
-      <Route path="compte" element={<Compte />} />
-      <Route path="forgot_password" element={<ForgotPassword />} />
-      <Route path="Connection_Cand" element={<Connection_Cand />} />
-      <Route
-        path="Postuler"
-        element={
-          <>
-            <PageTitle title="Postuler | AFT_RECRUTEMENT" />
-            <Postuler />
-          </>
-        }
-      />
+      <Route>
+        <Route path="/" index element={<Accueil />} />
 
-      <Route
-        path="Infos_Candidat"
-        element={
+        <Route
+          path="/web/login"
+          element={
+            <>
+              <PageTitle title="login | AFT_RECRUTEMENT" />
+              <Connection />
+            </>
+          }
+        />
+
+        <Route
+          path="/web/compte"
+          element={
+            <>
+              <PageTitle title="compte | AFT_RECRUTEMENT" />
+              <Compte />
+            </>
+          }
+        />
+
+        <Route
+          path="/web/forgot_password"
+          element={
+            <>
+              <PageTitle title="forgot_password | AFT_RECRUTEMENT" />
+              <ForgotPassword />
+            </>
+          }
+        />
+
+        <Route
+          path="/web/Connection_Cand"
+          element={
+            <>
+              <PageTitle title="Connection_Cand | AFT_RECRUTEMENT" />
+              <Connection_Cand />
+            </>
+          }
+        />
+
+        <Route
+          path="/web/Postuler"
+          element={
+            <>
+              <PageTitle title="Postuler | AFT_RECRUTEMENT" />
+              <Postuler />
+            </>
+          }
+        />
+
+        <Route path="/web/Infos_Candidat" element={
           <>
             <PageTitle title="Mes_Infos | AFT_RECRUTEMENT" />
             <Mes_Infos />
           </>
-        }
-      >
-        <Route
-          index
-          path="Mes_Infos"
-          element={
-            <>
-              <PageTitle title="Profil | AFT_RECRUTEMENT" />
-              <Profil />
-            </>
-          }
-        />
-        <Route
-          path="Form_Evaluation"
-          element={
-            <>
-              <PageTitle title="Form Evaluation | AFT_RECRUTEMENT" />
-              <Form_Evaluation />
-            </>
-          }
-        />
+        }>
+          <Route
+            index
+            element={
+              <>
+                <PageTitle title="Profil | AFT_RECRUTEMENT" />
+                <Profil />
+              </>
+            }
+          />
+          <Route
+            path="Form_Question"
+            element={
+              <>
+                <PageTitle title="Form Question | AFT_RECRUTEMENT" />
+                <Form_Question />
+              </>
+            }
+          />
+        </Route>
       </Route>
+
+
+
 
       {/* Protected Routes with DefaultLayout */}
       <Route path="/dashboard" element={<DefaultLayout />}>
@@ -119,27 +149,6 @@ function App() {
           />
         </Route>
 
-        <Route path="Sondage">
-          <Route
-            path="Form_Sondage"
-            element={
-              <>
-                <PageTitle title="Form Sondage | AFT_RECRUTEMENT" />
-                <Form_Sondage />
-              </>
-            }
-          />
-          <Route
-            path="Liste_Sondage"
-            element={
-              <>
-                <PageTitle title="Liste Sondage | AFT_RECRUTEMENT" />
-                <Liste_Sondage />
-              </>
-            }
-          />
-        </Route>
-
         <Route path="Offre_A">
           <Route
             path="Form_Offre_A"
@@ -161,22 +170,13 @@ function App() {
           />
         </Route>
 
-        <Route path="Evaluation">
+        <Route path="Question">
           <Route
-            path="Form_Evaluation"
+            path="Liste_Question"
             element={
               <>
-                <PageTitle title="Form Evaluation | AFT_RECRUTEMENT" />
-                <Form_Evaluation />
-              </>
-            }
-          />
-          <Route
-            path="Liste_Evaluation"
-            element={
-              <>
-                <PageTitle title="Liste Evaluation | AFT_RECRUTEMENT" />
-                <Liste_Evaluation />
+                <PageTitle title="Liste Question | AFT_RECRUTEMENT" />
+                <Liste_Question />
               </>
             }
           />
@@ -189,24 +189,24 @@ function App() {
               </>
             }
           />
-        </Route>
+        </Route> 
 
-        <Route path="Candidat">
+        <Route path="Candidature">
           {/* <Route
-            path="Form_Candidat"
+            path="Form_Candidature"
             element={
               <>
-                <PageTitle title="Form Candidat | AFT_RECRUTEMENT" />
-                <Form_Candidat />
+                <PageTitle title="Form Candidature | AFT_RECRUTEMENT" />
+                <Form_Candidature />
               </>
             }
           /> */}
           <Route
-            path="Liste_Candidat"
+            path="Liste_Candidature"
             element={
               <>
-                <PageTitle title="Liste Candidat | AFT_RECRUTEMENT" />
-                <Liste_Candidat />
+                <PageTitle title="Liste Candidature | AFT_RECRUTEMENT" />
+                <Liste_Candidature />
               </>
             }
           />
@@ -221,27 +221,6 @@ function App() {
             </>
           }
         />
-
-        <Route path="Mail">
-          <Route
-            path="Form_Mail"
-            element={
-              <>
-                <PageTitle title="Form Mail | AFT_RECRUTEMENT" />
-                <Form_Mail />
-              </>
-            }
-          />
-          <Route
-            path="Liste_Mail"
-            element={
-              <>
-                <PageTitle title="Liste Mail | AFT_RECRUTEMENT" />
-                <Liste_Mail />
-              </>
-            }
-          />
-        </Route>
 
         <Route
           path="*"

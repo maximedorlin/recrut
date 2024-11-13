@@ -1,0 +1,73 @@
+
+.d-flex {
+    display: flex;
+  }
+  
+  .flex-row {
+    flex-direction: row;
+  }
+  
+  .align-items-center {
+    align-items: center;
+  }
+  
+  .justify-content-between {
+    justify-content: space-between;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  input[type="search"] {
+    width: 75%;
+    border: none;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem;
+  }
+  
+  .ms-2 {
+    margin-left: 0.5rem;
+  }
+  
+  /* Assurer un bon espacement vertical avec justify-content-between */
+  .d-flex.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+  
+  /* Espacement autour des éléments */
+  .d-flex.flex-column .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Bouton de recherche */
+  .btn-info {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+  }
+  
+  /* Assure que le titre est bien centré */
+  h2.text-center {
+    text-align: center;
+  }
+  

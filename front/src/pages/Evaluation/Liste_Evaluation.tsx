@@ -1,7 +1,7 @@
 /** @format */
 
 import { Link } from "react-router-dom";
-import { useDeleteEvaluationMutation, useGetEvaluationsQuery } from "../../store/api/EvaluationApp";
+import { useDeleteEvaluationMutation, useGetEvaluationsQuery } from "../../store/api/Question";
 import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 
 const ListeEvaluation = () => {

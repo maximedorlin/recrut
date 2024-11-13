@@ -1,20 +1,20 @@
 package com.afreetech.recrutement.service;
 
+import java.lang.module.ResolutionException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.afreetech.recrutement.exception.ResourceNotFoundException;
 import com.afreetech.recrutement.entity.DomaineComp;
 import com.afreetech.recrutement.repository.DomaineCompRepository;
-import com.afreetech.recrutement.repository.OffreRepository;
+import com.afreetech.recrutement.repository.JobOfferRepository;
 
 @Service
 public class DomaineCompServiceImpl implements DomaineCompService {
 
     @Autowired
-    private OffreRepository offreRepository;
+    private JobOfferRepository offreRepository;
 
     @Autowired
     private DomaineCompRepository domaineCompRepository;
@@ -27,7 +27,7 @@ public class DomaineCompServiceImpl implements DomaineCompService {
     @Override
     public List<DomaineComp> getAllDomaineCompsByOffreId(Long offreId) {
         if (!offreRepository.existsById(offreId)) {
-            throw new ResourceNotFoundException("Not found Offre with id = " + offreId);
+            throw new ResolutionException("Not found Offre with id = " + offreId);
         }
         return domaineCompRepository.findByOffreId(offreId);
     }
@@ -35,7 +35,7 @@ public class DomaineCompServiceImpl implements DomaineCompService {
     @Override
     public DomaineComp getDomaineCompById(Long id) {
         return domaineCompRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found domaineComp with id = " + id));
+                .orElseThrow(() -> new ResolutionException("Not found domaineComp with id = " + id));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class DomaineCompServiceImpl implements DomaineCompService {
         return offreRepository.findById(offreId).map(offre -> {
             domaineCompRequest.setOffre(offre);
             return domaineCompRepository.save(domaineCompRequest);
-        }).orElseThrow(() -> new ResourceNotFoundException("Not found candidat with id = " + offreId));
+        }).orElseThrow(() -> new ResolutionException("Not found candidat with id = " + offreId));
     }
 
     @Override
@@ -61,7 +61,7 @@ public class DomaineCompServiceImpl implements DomaineCompService {
     @Override
     public void deleteAllDomaineCompsOfOffre(Long offreId) {
         if (!offreRepository.existsById(offreId)) {
-            throw new ResourceNotFoundException("Not found Offre with id = " + offreId);
+            throw new ResolutionException("Not found Offre with id = " + offreId);
         }
         domaineCompRepository.findByOffreId(offreId);
     }

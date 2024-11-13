@@ -4,18 +4,14 @@
 import ThemeSlice from "./slices/ThemeSlice";
 import AuthSlice from "./slices/AuthSlice";
 import { configureStore } from "@reduxjs/toolkit";
-import { NoteEvalApp } from './api/NoteEval';
+import { QuestionResponseApp } from './api/QuestionResponseApi';
 import { CandidatureApp } from './api/CandidatureApp';
 import { DomaineCompApp } from './api/DomaineComp';
 import { CompetenceApp } from './api/CompetenceApp';
-import { DocumentApp } from './api/DocumentApp';
 import { OffreApp } from './api/OffreApp';
-import { EvaluationApp } from './api/EvaluationApp';
+import { QuestionApp } from './api/QuestionApp';
 import { UserApp } from './api/UserApp';
 import { AuthenticationApi } from "./api/AuthenticationApi";
-import { MailApp } from "./api/MailApi";
-import { SondageApp } from "./api/SondageApp";
-import { CandidatApp } from "./api/CandidatApp";
 
 // import { ArticleApi } from "./api/ArticleApi";
 
@@ -24,33 +20,25 @@ export const store = configureStore({
 		ThemeSlice,
 		AuthSlice,
 		[AuthenticationApi.reducerPath]: AuthenticationApi.reducer,
-		[MailApp.reducerPath]: MailApp.reducer,
-		[SondageApp.reducerPath]: SondageApp.reducer,
 		[UserApp.reducerPath]: UserApp.reducer,
-		[EvaluationApp.reducerPath]: EvaluationApp.reducer,
+		[QuestionApp.reducerPath]: QuestionApp.reducer,
 		[OffreApp.reducerPath]: OffreApp.reducer,
-		[DocumentApp.reducerPath]: DocumentApp.reducer,
 		[CompetenceApp.reducerPath]: CompetenceApp.reducer,
 		[DomaineCompApp.reducerPath]: DomaineCompApp.reducer,
 		[CandidatureApp.reducerPath]: CandidatureApp.reducer,
-		[CandidatApp.reducerPath]: CandidatApp.reducer,
-		[NoteEvalApp.reducerPath]: NoteEvalApp.reducer
+		[QuestionResponseApp.reducerPath]: QuestionResponseApp.reducer
 	},
 
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(
 			AuthenticationApi.middleware,
-			MailApp.middleware,
 			UserApp.middleware,
-			SondageApp.middleware,
-			EvaluationApp.middleware,
+			QuestionApp.middleware,
 			OffreApp.middleware,
-			DocumentApp.middleware,
 			CompetenceApp.middleware,
 			DomaineCompApp.middleware,
 			CandidatureApp.middleware,
-			CandidatApp.middleware,
-			NoteEvalApp.middleware
+			QuestionResponseApp.middleware
 		),
 }
 );

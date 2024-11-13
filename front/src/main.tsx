@@ -6,18 +6,19 @@ import './css/style.css';
 import './css/satoshi.css';
 import 'jsvectormap/dist/css/jsvectormap.css';
 import 'flatpickr/dist/flatpickr.min.css';
-// import FormPage from './pages/Pub/Formulaire';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
-// import store from './pages/App/Store';
+// import ThemeProvider from '@mui/material/styles/ThemeProvider';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Router>
-    <Provider store={store}>   
-      <App />
-    </Provider> 
-      {/* <FormPage/> */}
+      <Provider store={store}>
+        {/* <ThemeProvider theme={undefined}>  */}
+          <App />
+        {/* </ThemeProvider> */}
+      </Provider>
+      {/* <FormPage/>  */}
     </Router>
   </React.StrictMode>,
 );

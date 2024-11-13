@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ClickOutside from '../ClickOutside';
 //import UserOne from '../../images/user/user-01.png';
-import th from '../../images/user/th.png';
+// import th from '../../images/user/th.png';
 
 
 const DropdownUser = () => {
@@ -22,9 +22,9 @@ const DropdownUser = () => {
           <span className="block text-xs">Dev</span>
         </span>
 
-        <span className="h-12 w-12 rounded-full">
+        {/* <span className="h-12 w-12 rounded-full">
           <img src={th} alt="th" />
-        </span>
+        </span> */}
 
         <svg
           className="hidden fill-current sm:block"

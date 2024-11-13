@@ -1,6 +1,9 @@
 package com.afreetech.recrutement.controller;
 
+import java.lang.module.ResolutionException;
 import java.util.List;
+
+import javax.management.relation.RelationNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.afreetech.recrutement.entity.Competence;
 import com.afreetech.recrutement.service.CompetenceService;
-import com.afreetech.recrutement.exception.ResourceNotFoundException;
+
 @RestController
-@RequestMapping("/api/competences")
 public class CompetenceController {
 
     @Autowired
@@ -38,12 +40,10 @@ public class CompetenceController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Competence> getCompetencesBydomaineCompId(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<Competence> getCompetencesBydomaineCompId(@PathVariable(value = "id") Long id) throws RelationNotFoundException {
         try {
             Competence competence = competenceService.getCompetenceById(id);
             return new ResponseEntity<>(competence, HttpStatus.OK);
-        } catch (ResourceNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Competenceaire non trouvé
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // Erreur interne du serveur
         }
@@ -66,7 +66,7 @@ public class CompetenceController {
         try {
             Competence updatedCompetence = competenceService.updateCompetence(id, competenceRequest);
             return new ResponseEntity<>(updatedCompetence, HttpStatus.OK);
-        } catch (ResourceNotFoundException e) {
+        } catch (ResolutionException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Competenceaire non trouvé
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -78,22 +78,22 @@ public class CompetenceController {
         try {
             competenceService.deleteCompetence(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ResourceNotFoundException e) {
+        } catch (ResolutionException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @DeleteMapping("/candidatures/{domaineCompId}")
-    public ResponseEntity<HttpStatus> deleteAllCompetenceOfDomaineCompId(@PathVariable(value = "domaineCompId") Long domaineCompId) {
-        try {
-            competenceService.deleteAllCompetenceOfDomaineCompId(domaineCompId);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ResourceNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    // @DeleteMapping("/candidatures/{domaineCompId}")
+    // public ResponseEntity<HttpStatus> deleteAllCompetenceOfDomaineCompId(@PathVariable(value = "domaineCompId") Long domaineCompId) {
+    //     try {
+    //         competenceService.deleteAllCompetenceOfDomaineCompId(domaineCompId);
+    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    //     } catch (ResolutionException e) {
+    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
+    // }
 }

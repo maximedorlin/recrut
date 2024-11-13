@@ -12,8 +12,7 @@ export interface Dash {
 	Offre: string;
 	Evaluation: string;
 	User: string;
-	Sondage: string;
-	Mail: string;
+	Candidature: string;
 }
 
 export interface UserSateAndAuthResponse {
@@ -31,79 +30,43 @@ export interface Token {
 
 
 //interface Offre
-export interface Offre {
+export interface JobOffer {
 	id: number;
-	titreOffre: string;
+	titre: string;
 	datePost: Date;
-	fichierAnnonce: string;
+	ficheAnnonce: string;
 	statut: boolean;
 	typeContrat: string;
 	dateLimite: Date;
-	// domaineComps: unknown[];
-	// candidatures: unknown[];
+	companyName:string;
 }
 
 //interface user
 export interface User {
 	id: number;
 	email: string;
-	username: string;
+	name: string;
+	phoneNumber: string;
 	password: string;
-	role: unknown[];
-}
-
-//interface mail
-export interface Mail {
-	id: number;
-	typeMail: string;
-	descriptionMail: string;
-	contenuMail: string;
-	Candidat: unknown[];
-}
-
-//interface sondage
-export interface Sondage {
-	id: number;
-	titre: string;
-	quetion: string;
-	reponceVrai:boolean;
-	reponce: string;
-}
-
-//interface Postulant
-export interface Candidat {
-	id: number;
-	niveauEtude: number;
-	anneeExperience: number;
-	dernierEtablissement: string;
-	dispoDu: Date;
-	dispoAu: Date;
-	modalite: string;
-	permisConduire: boolean;
-	situationCand: string;
-	motivation: string;
-// 	postulerList: unknown[];
-// 	evaluationList: unknown[];
-// 	mailList: unknown[];
+	role: string;
 }
 
 //interface Candidature
 export interface Candidature {
 	id: number;
-	dateEnregistrement: Date;
-	statutActuel: unknown[];
-	Candidat: unknown[];
-	Offre: unknown[];
+	dateEnvoie: Date;
+	score: number;
+	jobOffer: unknown[];
+	user: unknown[];
+	questionResponse: unknown[];
 }
 
-//interface Evaluation
-export interface Evaluation {
+//interface Question
+export interface Question {
 	id: number;
 	titre: string;
-	epreuve: string;
-	dateEvaluation: Date;
-	decisionEvaluation: string;
-	// noteEvals : undefined[];
+	choix: string;
+	reponseCorrecte: string;
 }
 
 //interface Competence
@@ -111,34 +74,24 @@ export interface Competence {
 	id: number;
 	titre: string;
 	contenuMail: string;
-	DomaineComp: unknown[];
+	domaineComp: unknown[];
 }
 
 //interface DomaineComp
 export interface DomaineComp {
 	id: number;
 	nomType: string;
-	offre: unknown[];
+	jobOffer: unknown[];
 }
 
-//interface Document
-export interface Document {
-	id: number;
-	anneeObtention:number;
-	titreDoc:string;
-	etablissementObtention:string;
-	mention:number;
-	docCourant:boolean;
-	Candidature: unknown[];
+export interface QuestionResponse{
+	id : number;
+	response : string;
+	question : unknown[];
+	candidature : unknown[];
 }
 
-//interface NoteEval
-export interface NoteEval {
-	id: number;
-	note: number;
-	dateEvaluation: Date;
-	commentaire: string;
-	evaluation: unknown[];
-	candidature :unknown[];
-}
+
+
+
 

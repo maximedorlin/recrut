@@ -25,6 +25,7 @@ const UserEditForm = ({ User }: { User: User }) => {
 		initiale: {
 			username: User.username,
 			email: User.email,
+		
 			password: User.password,
 			role: User.role,
 		},

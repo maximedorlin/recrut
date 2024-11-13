@@ -4,7 +4,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // import { BACKEND_URL } from "../constants/env";
 
 import { BACKEND_API_URL } from "../../utils/env";
-import { initialState } from "../slices/AuthSlice";
 import { User} from "../../interfaces/mainInterfaces";
 
 export const UserApp = createApi({

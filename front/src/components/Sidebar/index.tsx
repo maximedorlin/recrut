@@ -63,8 +63,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
+
         <NavLink to="/">
-          <img src={Logo} alt="th" />
+        <div className='d-flex flex-row align-items-center justify-content-between'>
+          <img src={Logo} alt="th" style={{width:80, height:60}}/>
+          <h1 className='align-items-center'>AFREETECH</h1>
+          </div>
         </NavLink>
 
         <button
@@ -74,22 +78,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           aria-expanded={sidebarOpen}
           className="block lg:hidden"
         >
-
         </button>
+
       </div>
       {/* <!-- SIDEBAR HEADER --> */}
 
       <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
         {/* <!-- Sidebar Menu --> */}
-        <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
+        <nav className="mt-1 py-4 px-4 lg:mt-9 lg:px-6">
           {/* <!-- Menu Group --> */}
           <div>
             <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
 
-
-
-
-
+menu
 
             </h3>
 
@@ -198,6 +199,63 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </SidebarLinkGroup>
               {/* <!-- Menu Item job --> */}
 
+                            {/* <!-- Menu Item Candidature --> */}
+                            <SidebarLinkGroup
+                activeCondition={
+                  pathname === 'Candidature' || pathname.includes('Candidature')
+                }
+              >
+                {(handleClick, _open) => {
+                  return (
+                    <React.Fragment>
+                      <NavLink
+                        to="Candidature/Liste_Candidature"
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === 'Candidature' ||
+                          pathname.includes('Liste_Candidature')) &&
+                          'bg-graydark dark:bg-meta-4'
+                          }`}
+                      >
+<svg
+                          className="fill-current"
+                          width="18"
+                          height="19"
+                          viewBox="0 0 18 19"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clipPath="url(#clip0_130_9807)">
+                            <path
+                              d="M15.7501 0.55835H2.2501C1.29385 0.55835 0.506348 1.34585 0.506348 2.3021V7.53335C0.506348 8.4896 1.29385 9.2771 2.2501 9.2771H15.7501C16.7063 9.2771 17.4938 8.4896 17.4938 7.53335V2.3021C17.4938 1.34585 16.7063 0.55835 15.7501 0.55835ZM16.2563 7.53335C16.2563 7.8146 16.0313 8.0396 15.7501 8.0396H2.2501C1.96885 8.0396 1.74385 7.8146 1.74385 7.53335V2.3021C1.74385 2.02085 1.96885 1.79585 2.2501 1.79585H15.7501C16.0313 1.79585 16.2563 2.02085 16.2563 2.3021V7.53335Z"
+                              fill=""
+                            />
+                            <path
+                              d="M6.13135 10.9646H2.2501C1.29385 10.9646 0.506348 11.7521 0.506348 12.7083V15.8021C0.506348 16.7583 1.29385 17.5458 2.2501 17.5458H6.13135C7.0876 17.5458 7.8751 16.7583 7.8751 15.8021V12.7083C7.90322 11.7521 7.11572 10.9646 6.13135 10.9646ZM6.6376 15.8021C6.6376 16.0833 6.4126 16.3083 6.13135 16.3083H2.2501C1.96885 16.3083 1.74385 16.0833 1.74385 15.8021V12.7083C1.74385 12.4271 1.96885 12.2021 2.2501 12.2021H6.13135C6.4126 12.2021 6.6376 12.4271 6.6376 12.7083V15.8021Z"
+                              fill=""
+                            />
+                            <path
+                              d="M15.75 10.9646H11.8688C10.9125 10.9646 10.125 11.7521 10.125 12.7083V15.8021C10.125 16.7583 10.9125 17.5458 11.8688 17.5458H15.75C16.7063 17.5458 17.4938 16.7583 17.4938 15.8021V12.7083C17.4938 11.7521 16.7063 10.9646 15.75 10.9646ZM16.2562 15.8021C16.2562 16.0833 16.0312 16.3083 15.75 16.3083H11.8688C11.5875 16.3083 11.3625 16.0833 11.3625 15.8021V12.7083C11.3625 12.4271 11.5875 12.2021 11.8688 12.2021H15.75C16.0312 12.2021 16.2562 12.4271 16.2562 12.7083V15.8021Z"
+                              fill=""
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_130_9807">
+                              <rect
+                                width="18"
+                                height="18"
+                                fill="white"
+                                transform="translate(0 0.052124)"
+                              />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        Candidature
+                      </NavLink>
+                    </React.Fragment>
+                  );
+                }}
+              </SidebarLinkGroup>
+              {/* <!-- Menu Item Candidature --> */}
+
               {/* <!-- Menu Item Ui utilisateur --> */}
               <SidebarLinkGroup
                 activeCondition={
@@ -242,19 +300,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </SidebarLinkGroup>
               {/* <!-- Menu Item Ui Utilisateur --> */}
 
-              {/* <!-- Menu Item Sondage --> */}
+              {/* <!-- Menu Item Question --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === 'Sondage' || pathname.includes('Sondage')
+                  pathname === 'Question' || pathname.includes('Question')
                 }
               >
                 {(handleClick, _open) => {
                   return (
                     <React.Fragment>
                       <NavLink
-                        to="Sondage/Liste_Sondage"
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === 'Sondage' ||
-                          pathname.includes('Liste_Sondage')) &&
+                        to="Question/Liste_Question"
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === 'Question' ||
+                          pathname.includes('Liste_Question')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                       >
@@ -287,111 +345,70 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             </clipPath>
                           </defs>
                         </svg>
-                        Sondage
+                        Evaluation
                      
                       </NavLink>
                     </React.Fragment>
                   );
                 }}
               </SidebarLinkGroup>
-              {/* <!-- Menu Item Sondage --> */}
+              {/* <!-- Menu Item Question --> */}
 
-              {/* <!-- Menu Item Candidat --> */}
+
+              {/* <!-- Menu Item Settings --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === 'Candidat' || pathname.includes('Candidat')
-                }
-              >
-                {(handleClick, _open) => {
-                  return (
-                    <React.Fragment>
-                      <NavLink
-                        to="Candidat/Liste_Candidat"
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === 'Candidat' ||
-                          pathname.includes('Liste_Candidat')) &&
-                          'bg-graydark dark:bg-meta-4'
-                          }`}
-                      >
-                        <svg
-                          className="fill-current"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M9.0002 7.79065C11.0814 7.79065 12.7689 6.1594 12.7689 4.1344C12.7689 2.1094 11.0814 0.478149 9.0002 0.478149C6.91895 0.478149 5.23145 2.1094 5.23145 4.1344C5.23145 6.1594 6.91895 7.79065 9.0002 7.79065ZM9.0002 1.7719C10.3783 1.7719 11.5033 2.84065 11.5033 4.16252C11.5033 5.4844 10.3783 6.55315 9.0002 6.55315C7.62207 6.55315 6.49707 5.4844 6.49707 4.16252C6.49707 2.84065 7.62207 1.7719 9.0002 1.7719Z"
-                            fill=""
-                          />
-                          <path
-                            d="M10.8283 9.05627H7.17207C4.16269 9.05627 1.71582 11.5313 1.71582 14.5406V16.875C1.71582 17.2125 1.99707 17.5219 2.3627 17.5219C2.72832 17.5219 3.00957 17.2407 3.00957 16.875V14.5406C3.00957 12.2344 4.89394 10.3219 7.22832 10.3219H10.8564C13.1627 10.3219 15.0752 12.2063 15.0752 14.5406V16.875C15.0752 17.2125 15.3564 17.5219 15.7221 17.5219C16.0877 17.5219 16.3689 17.2407 16.3689 16.875V14.5406C16.2846 11.5313 13.8377 9.05627 10.8283 9.05627Z"
-                            fill=""
-                          />
-                        </svg>
-                        Candidat
-                      </NavLink>
-                    </React.Fragment>
-                  );
-                }}
-              </SidebarLinkGroup>
-              {/* <!-- Menu Item Candidat --> */}
-
-
-
-
-
-              {/* <!-- Menu Item evaluation --> */}
-              <SidebarLinkGroup
-                activeCondition={
-                  pathname === 'Evaluation' || pathname.includes('Evaluation')
+                  pathname === 'Settings' || pathname.includes('Settings')
                 }
               >
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
                       <NavLink
-                        to="Evaluation/Liste_Evaluation"
+                        to="Settings/Liste_Settings"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 
-                          ${(pathname === 'Evaluation' ||
-                          pathname.includes('Liste_Evaluation')) &&
+                          ${(pathname === 'Settings' ||
+                          pathname.includes('Liste_Settings')) &&
                           'bg-graydark dark:bg-meta-4'
                           }`}
                       >
-                        <svg
-                          className="fill-current"
-                          width="18"
-                          height="19"
-                          viewBox="0 0 18 19"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g clipPath="url(#clip0_130_9807)">
-                            <path
-                              d="M15.7501 0.55835H2.2501C1.29385 0.55835 0.506348 1.34585 0.506348 2.3021V7.53335C0.506348 8.4896 1.29385 9.2771 2.2501 9.2771H15.7501C16.7063 9.2771 17.4938 8.4896 17.4938 7.53335V2.3021C17.4938 1.34585 16.7063 0.55835 15.7501 0.55835ZM16.2563 7.53335C16.2563 7.8146 16.0313 8.0396 15.7501 8.0396H2.2501C1.96885 8.0396 1.74385 7.8146 1.74385 7.53335V2.3021C1.74385 2.02085 1.96885 1.79585 2.2501 1.79585H15.7501C16.0313 1.79585 16.2563 2.02085 16.2563 2.3021V7.53335Z"
-                              fill=""
-                            />
-                            <path
-                              d="M6.13135 10.9646H2.2501C1.29385 10.9646 0.506348 11.7521 0.506348 12.7083V15.8021C0.506348 16.7583 1.29385 17.5458 2.2501 17.5458H6.13135C7.0876 17.5458 7.8751 16.7583 7.8751 15.8021V12.7083C7.90322 11.7521 7.11572 10.9646 6.13135 10.9646ZM6.6376 15.8021C6.6376 16.0833 6.4126 16.3083 6.13135 16.3083H2.2501C1.96885 16.3083 1.74385 16.0833 1.74385 15.8021V12.7083C1.74385 12.4271 1.96885 12.2021 2.2501 12.2021H6.13135C6.4126 12.2021 6.6376 12.4271 6.6376 12.7083V15.8021Z"
-                              fill=""
-                            />
-                            <path
-                              d="M15.75 10.9646H11.8688C10.9125 10.9646 10.125 11.7521 10.125 12.7083V15.8021C10.125 16.7583 10.9125 17.5458 11.8688 17.5458H15.75C16.7063 17.5458 17.4938 16.7583 17.4938 15.8021V12.7083C17.4938 11.7521 16.7063 10.9646 15.75 10.9646ZM16.2562 15.8021C16.2562 16.0833 16.0312 16.3083 15.75 16.3083H11.8688C11.5875 16.3083 11.3625 16.0833 11.3625 15.8021V12.7083C11.3625 12.4271 11.5875 12.2021 11.8688 12.2021H15.75C16.0312 12.2021 16.2562 12.4271 16.2562 12.7083V15.8021Z"
-                              fill=""
-                            />
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_130_9807">
-                              <rect
-                                width="18"
-                                height="18"
-                                fill="white"
-                                transform="translate(0 0.052124)"
-                              />
-                            </clipPath>
-                          </defs>
-                        </svg>
-                        Evaluation
+
+
+           <svg
+            className="fill-current"
+           width="18"
+            height="19"
+             viewBox="0 0 18 19"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+           >
+           <g clipPath="url(#clip0_130_9807)">
+               <path
+                 d="M15.7501 0.55835H2.2501C1.29385 0.55835 0.506348 1.34585 0.506348 2.3021V7.53335C0.506348 8.4896 1.29385 9.2771 2.2501 9.2771H15.7501C16.7063 9.2771 17.4938 8.4896 17.4938 7.53335V2.3021C17.4938 1.34585 16.7063 0.55835 15.7501 0.55835ZM16.2563 7.53335C16.2563 7.8146 16.0313 8.0396 15.7501 8.0396H2.2501C1.96885 8.0396 1.74385 7.8146 1.74385 7.53335V2.3021C1.74385 2.02085 1.96885 1.79585 2.2501 1.79585H15.7501C16.0313 1.79585 16.2563 2.02085 16.2563 2.3021V7.53335Z"
+                 fill=""
+              />
+              <path
+               d="M6.13135 10.9646H2.2501C1.29385 10.9646 0.506348 11.7521 0.506348 12.7083V15.8021C0.506348 16.7583 1.29385 17.5458 2.2501 17.5458H6.13135C7.0876 17.5458 7.8751 16.7583 7.8751 15.8021V12.7083C7.90322 11.7521 7.11572 10.9646 6.13135 10.9646ZM6.6376 15.8021C6.6376 16.0833 6.4126 16.3083 6.13135 16.3083H2.2501C1.96885 16.3083 1.74385 16.0833 1.74385 15.8021V12.7083C1.74385 12.4271 1.96885 12.2021 2.2501 12.2021H6.13135C6.4126 12.2021 6.6376 12.4271 6.6376 12.7083V15.8021Z"
+                 fill=""
+              />
+               <path
+                 d="M15.75 10.9646H11.8688C10.9125 10.9646 10.125 11.7521 10.125 12.7083V15.8021C10.125 16.7583 10.9125 17.5458 11.8688 17.5458H15.75C16.7063 17.5458 17.4938 16.7583 17.4938 15.8021V12.7083C17.4938 11.7521 16.7063 10.9646 15.75 10.9646ZM16.2562 15.8021C16.2562 16.0833 16.0312 16.3083 15.75 16.3083H11.8688C11.5875 16.3083 11.3625 16.0833 11.3625 15.8021V12.7083C11.3625 12.4271 11.5875 12.2021 11.8688 12.2021H15.75C16.0312 12.2021 16.2562 12.4271 16.2562 12.7083V15.8021Z"
+                 fill=""
+               />
+            </g>
+            <defs>
+              <clipPath id="clip0_130_9807">
+                <rect
+                   width="18"
+                   height="18"
+                   fill="white"
+                   transform="translate(0 0.052124)"
+                 />
+               </clipPath>
+             </defs>
+           </svg>
+
+                        Settings
                       </NavLink>
                     </React.Fragment>
                   );
@@ -402,10 +419,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
 
 
-              {/* <!-- Menu Item mail --> */}
-              <SidebarLinkGroup
+             
+
+              {/* <SidebarLinkGroup
                 activeCondition={
-                  pathname === 'Evaluation' || pathname.includes('Evaluation')
+                  pathname === 'Settings' || pathname.includes('Settings')
                 }
               >
                 {(_handleClick, open) => {
@@ -436,11 +454,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
+              </SidebarLinkGroup> */}
 
 
 
-              {/* <!-- Menu Item evaluation --> */}
+              {/* <!-- Menu Item Settings --> */}
 
 
             </ul>
@@ -913,10 +931,10 @@ export default Sidebar;
 // </SidebarLinkGroup>
 // {/* <!-- Menu Item Candidat --> */}
 
-// {/* <!-- Menu Item evaluation --> */}
+// {/* <!-- Menu Item Settings --> */}
 // <SidebarLinkGroup
 //   activeCondition={
-//     pathname === 'Evaluation' || pathname.includes('Evaluation')
+//     pathname === 'Settings' || pathname.includes('Settings')
 //   }
 // >
 //   {(handleClick, open) => {
@@ -924,8 +942,8 @@ export default Sidebar;
 //       <React.Fragment>
 //         <NavLink
 //           to="#"
-//           className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === 'Evaluation' ||
-//             pathname.includes('Evaluation')) &&
+//           className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${(pathname === 'Settings' ||
+//             pathname.includes('Settings')) &&
 //             'bg-graydark dark:bg-meta-4'
 //             }`}
 //           onClick={(e) => {
@@ -968,7 +986,7 @@ export default Sidebar;
 //               </clipPath>
 //             </defs>
 //           </svg>
-//           Evaluation
+//           Settings
 //           <svg
 //             className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && 'rotate-180'
 //               }`}
@@ -994,25 +1012,25 @@ export default Sidebar;
 //           <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
 //             {/* <li>
 //               <NavLink
-//                 to="Evaluation/form_Evaluation"
+//                 to="Settings/form_Settings"
 //                 className={({ isActive }) =>
 //                   'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
 //                   (isActive && '!text-white')
 //                 }
 //               >
-//                 Ajouter evaluation
+//                 Ajouter Settings
 //               </NavLink>
 //             </li> */}
 
 //             <li>
 //               <NavLink
-//                 to="Evaluation/Liste_Evaluation"
+//                 to="Settings/Liste_Settings"
 //                 className={({ isActive }) =>
 //                   'group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ' +
 //                   (isActive && '!text-white')
 //                 }
 //               >
-//                 Liste evaluation
+//                 Liste Settings
 //               </NavLink>
 //             </li>
 
@@ -1029,10 +1047,10 @@ export default Sidebar;
 
 
 
-// {/* <!-- Menu Item evaluation --> */}
+// {/* <!-- Menu Item Settings --> */}
 // <SidebarLinkGroup
 //   activeCondition={
-//     pathname === 'Evaluation' || pathname.includes('Evaluation')
+//     pathname === 'Settings' || pathname.includes('Settings')
 //   }
 // >
 //   {(_handleClick, open) => {
@@ -1079,7 +1097,7 @@ export default Sidebar;
 
 
 
-// {/* <!-- Menu Item evaluation --> */}
+// {/* <!-- Menu Item Settings --> */}
 
 
 // </ul>

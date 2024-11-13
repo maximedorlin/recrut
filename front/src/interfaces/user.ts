@@ -33,5 +33,6 @@ export interface UserInformations {
 	email: string;
 	username: string;
 	password: string;
-	role: unknown[];
+	phoneNumber: string;
+	role: string;
 }

@@ -1,8 +1,6 @@
 /** @format */
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-import { initialState } from "../slices/AuthSlice";
 import { Competence} from "../../interfaces/mainInterfaces";
 import { BACKEND_API_URL } from "../../utils/env";
 
@@ -45,7 +43,7 @@ export const CompetenceApp = createApi({
 		}),
 
 		DeleteCompetence: builder.mutation({
-			query: (idCompetence: number) => {
+			query: (id: number) => {
 				return {
 					url: `${id}/`,
 					method: "DELETE",
