@@ -1,28 +1,30 @@
 import { useEffect, useState } from 'react';
-import {Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Loader from './common/Loader';
-import PageTitle from './components/PageTitle';
-import Connection from './pages/Login/Connection';
+import PageTitle from './components/autres/PageTitle.tsx';
+import Connection from './pages/Accueil/Form_Connection.tsx';
 import DefaultLayout from './layout/DefaultLayout';
-import Settings from './pages/Settings';
-import Form_Utilisateur from './pages/Utilisateur/Form_Utilisateur';
-import Liste_Utilisateure from './pages/Utilisateur/Liste_Utilisateur';
-import Liste_Candidature from './pages/Candidature/List_Candidature.tsx';
+import Settings from './pages/Dashboard/Settings.tsx';
+import Form_Utilisateur from './pages/Dashboard/Form_Utilisateur.tsx';
+import Liste_Utilisateure from './pages/Dashboard/Liste_Utilisateur.tsx';
+import Liste_Candidature from './pages/Dashboard/List_Candidature.tsx';
 import Accueil from './pages/Accueil/Accueil';
 import Accueil_d from './pages/Dashboard/Accueil_d';
-import Connection_Cand from './pages/Login/Connection_Cand';
-import Profil from './pages/Candidature/Profil.tsx';
-import P404 from './pages/erreur/404';
-import Compte from './pages/Accueil/Compte.tsx';
-import ForgotPassword from './pages/Accueil/ForgotPosword.tsx';
-import Postuler from './pages/Accueil/Candidature.tsx';
-import Form_Offre_A from './pages/Offre_Emploi/Form_Offre_Emploi.tsx';
-import Liste_Offre_A from './pages/Offre_Emploi/Liste_Offre_Emploi.tsx';
-import Mes_Infos from './pages/Candidature/Mes_Infos.tsx';
-import Liste_Question from './pages/Question/Liste_Question.tsx';
-import Form_Question from './pages/Question/Form_Question.tsx';
+import Connection_Cand from './pages/Accueil/Form_Connection_Cand.tsx';
+import Profil from './pages/Dashboard/Form_Profil.tsx';
+import P404 from './pages/404.tsx';
+import Compte from './pages/Accueil/Form_Compte.tsx';
+import ForgotPassword from './pages/Accueil/Form_ForgotPosword.tsx';
+import Postuler from './pages/Accueil/Form_Candidature.tsx';
+import Form_Offre_A from './pages/Dashboard/Form_Offre_Emploi.tsx';
+import Liste_Offre_A from './pages/Dashboard/Liste_Offre_Emploi.tsx';
+import Mes_Infos from './pages/Accueil/Mes_Infos.tsx';
+import Liste_Question from './pages/Dashboard/Liste_Question.tsx';
+import Form_Question from './pages/Dashboard/Form_Evaluation.tsx';
+import Offre from './pages/Accueil/Form_Offre.tsx';
 
 function App() {
+
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
 
@@ -42,7 +44,7 @@ function App() {
     <Routes>
       {/* Public Routes */}
       <Route>
-        <Route path="/" index element={<Accueil />} />
+        <Route path="/web" index element={<Accueil />} />
 
         <Route
           path="/web/login"
@@ -53,6 +55,17 @@ function App() {
             </>
           }
         />
+
+        <Route
+          path="/web/offre"
+          element={
+            <>
+              <PageTitle title="offre | AFT_RECRUTEMENT" />
+              <Offre />
+            </>
+          }
+        />
+
 
         <Route
           path="/web/compte"
@@ -85,7 +98,7 @@ function App() {
         />
 
         <Route
-          path="/web/Postuler"
+          path="/web/postuler"
           element={
             <>
               <PageTitle title="Postuler | AFT_RECRUTEMENT" />
@@ -189,7 +202,7 @@ function App() {
               </>
             }
           />
-        </Route> 
+        </Route>
 
         <Route path="Candidature">
           {/* <Route

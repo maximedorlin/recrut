@@ -9,7 +9,7 @@ import { User} from "../../interfaces/mainInterfaces";
 export const UserApp = createApi({
 	reducerPath: "UserApp",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${BACKEND_API_URL}api/Users`,
+		baseUrl: `${BACKEND_API_URL}api/auth/`,
 		// prepareHeaders: (headers) => {
 		// 	const user = localStorage.getItem("WD_USER");
 		// 	if (user) {
@@ -27,7 +27,7 @@ export const UserApp = createApi({
 		CreateUser: builder.mutation({
 			query: (data: Omit<User, "id">) => {
 				return {
-					url: "",
+					url: "register",
 					method: "POST",
 					body: data,
 				};

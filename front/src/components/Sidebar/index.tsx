@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import SidebarLinkGroup from './SidebarLinkGroup';
-import Logo from '../../images/user/th.png';
+// import {th} from '../../asset/images/user/th.png';
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -64,10 +64,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
 
-        <NavLink to="/">
+        <NavLink to="/dashboard">
         <div className='d-flex flex-row align-items-center justify-content-between'>
-          <img src={Logo} alt="th" style={{width:80, height:60}}/>
-          <h1 className='align-items-center'>AFREETECH</h1>
+          {/* <img src={th} alt="th" style={{width:'80px', height:'60px'}}/> */}
+          <h1 className='align-items-center fd_side-1.2rem'>AFREETECH</h1>
           </div>
         </NavLink>
 
@@ -83,15 +83,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       </div>
       {/* <!-- SIDEBAR HEADER --> */}
 
-      <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
+      <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear fs-1.2rem" style={{fontSize:'1.3rem'}}>
         {/* <!-- Sidebar Menu --> */}
         <nav className="mt-1 py-4 px-4 lg:mt-9 lg:px-6">
           {/* <!-- Menu Group --> */}
           <div>
             <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
-
-menu
-
+              menu
             </h3>
 
             <ul className="mb-6 flex flex-col gap-1.5">
@@ -353,6 +351,12 @@ menu
                 }}
               </SidebarLinkGroup>
               {/* <!-- Menu Item Question --> */}
+
+
+
+              <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
+              Autre menu
+            </h3>
 
 
               {/* <!-- Menu Item Settings --> */}

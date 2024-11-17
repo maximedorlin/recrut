@@ -1,17 +1,17 @@
-import Offre from './offre';
-
-import './Accueil.css';
-import Header from './header';
-import './offre.css';
+import Carousel from '../../components/scenes/carouel/carousel';
+import ContactUs from '../../components/scenes/contactUs';
+import Footer from '../../components/scenes/footer';
+import Navbar1 from '../../components/scenes/navbar';
+import Offre1 from '../../components/scenes/ourClasses';
 
 const Accueil = () => {
   return (
     <>
-    <Header/>
-    <div className='corps'>
-    <Offre />
-    </div>
-
+      <Navbar1 />
+      <Carousel />
+      <Offre1/>
+      <ContactUs /> 
+      <Footer />
     </>
   );
 };

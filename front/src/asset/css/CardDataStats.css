@@ -1,0 +1,72 @@
+/* Conteneur de l'image avec superposition */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Effet de rotation sur l'image lors du survol */
+.image-container .image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Lorsque l'image est survolée, la rotation est appliquée */
+.image-container:hover .image {
+  transform: rotate(15deg); /* Rotation de l'image de 15 degrés */
+}
+
+/* Superposition qui apparaît lors du survol */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Fond sombre avec transparence */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Cachée par défaut */
+  transition: opacity 0.3s ease-in-out;
+  text-align: center;
+  padding: 20px;
+  visibility: hidden; /* Invisible par défaut */
+}
+
+/* Lorsque l'image est survolée, la superposition devient visible */
+.image-container:hover .image-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Texte de description centré en blanc */
+.description-text {
+  color: white; /* Texte en blanc */
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 1;
+}
+
+/* Style général pour la card */
+.card-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.text-content {
+  padding: 10px;
+}
+
+/* Effet de bouton lors du survol */
+button:hover {
+  background-color: #038e2f;
+  color: white;
+}

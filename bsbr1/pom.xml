@@ -15,7 +15,7 @@
     <name>recrutement</name>
     <description>mise sur pied de la plate forme de recrutement a afreetech</description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
