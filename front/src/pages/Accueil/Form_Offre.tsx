@@ -3,7 +3,7 @@ import React from 'react';
 import CardDataStats from '../../components/cardData/CardDataStats1';
 // import '../../asset/css/offre.css';
 import Navbar1 from '../../components/scenes/navbar';
-import Footer from '../../components/scenes/footer';
+import th2 from '../../asset/images/user/th2.png';
 
 
 const Offre: React.FC = () => {
@@ -19,6 +19,16 @@ const Offre: React.FC = () => {
   return (
     <>
     <Navbar1/>
+    <div
+        style={{
+          backgroundImage: `url(${th2})`, // Appliquer l'image d'arrière-plan
+          backgroundPosition: 'center', // Centrer l'image
+          backgroundSize: 'cover', // Couvrir toute la zone
+          backgroundRepeat: 'no-repeat', // Ne pas répéter l'image
+          height: '100vh', // Hauteur de l'écran entier
+        }}
+      >
+    
     <div className='corps mt-40'>
 
 
@@ -32,7 +42,7 @@ const Offre: React.FC = () => {
         </div>
       </div>
     </div>
-    {/* <Footer/> */}
+    </div>
     </>
   );
 };

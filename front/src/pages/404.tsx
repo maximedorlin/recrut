@@ -13,7 +13,7 @@ const P404 = () => {
       <p className="mt-3 text-lg">
         Désolé, quelque chose s'est mal passé. Veuillez réessayer plus tard.
       </p>
-      <Link to="/" className="mt-5 inline-block bg-primary text-white py-2 px-4 rounded">
+      <Link to="/web" className="mt-5 inline-block bg-primary text-white py-2 px-4 rounded">
         Retour à l'accueil
       </Link>
     </div>

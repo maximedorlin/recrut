@@ -63,7 +63,10 @@ const Form_Offre_A = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4.5">
                   {/* Champ Titre de l'Offre */}
                   <div className="mb-4.5">
-                    <label className="mb-2.5 block text-black dark:text-white">Titre de l'offre</label>
+                    <label className="mb-2.5 block text-black dark:text-white">
+                      Titre de l'offre
+                      <span className='text-meta-1'>*</span>
+                    </label>
                     <input
                       type="text"
                       name="titreOffre"
@@ -79,7 +82,10 @@ const Form_Offre_A = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="typeContrat" className="mb-2.5 block text-black dark:text-white">Domaine Competence</label>
+                    <label htmlFor="typeContrat" className="mb-2.5 block text-black dark:text-white">
+                      Domaine Competence
+                      <span className='text-meta-1'>*</span>
+                    </label>
                     <select
                       id="typeContrat"
                       name="typeContrat"
@@ -101,7 +107,10 @@ const Form_Offre_A = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4.5">
                   <div>
-                    <label htmlFor="competence" className="mb-2.5 block text-black dark:text-white">competence</label>
+                    <label htmlFor="competence" className="mb-2.5 block text-black dark:text-white">
+                      competence
+                      <span className='text-meta-1'>*</span>
+                    </label>
                     <select
                       id="competence"
                       name="competence"
@@ -120,7 +129,10 @@ const Form_Offre_A = () => {
                     )}
                   </div>
                   <div className="mb-4.5">
-                    <label className="mb-2.5 block text-black dark:text-white">Description</label>
+                    <label className="mb-2.5 block text-black dark:text-white">
+                      Description
+                      <span className='text-meta-1'>*</span>
+                    </label>
                     <input
                       type="text"
                       name="titreOffre"
@@ -145,7 +157,10 @@ const Form_Offre_A = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4.5">
                   {/* Champ Fichier d'Annonce */}
                   <div>
-                    <label className="mb-2.5 block text-black dark:text-white">Fichier d'annonce</label>
+                    <label className="mb-2.5 block text-black dark:text-white">
+                      Fichier d'annonce
+                      <span className='text-meta-1'>*</span>
+                    </label>
                     <input
                       type="file"
                       name="fichierAnnonce"
@@ -163,7 +178,10 @@ const Form_Offre_A = () => {
 
                   {/* Champ Date de Publication */}
                   <div>
-                    <label className="mb-2.5 block text-black dark:text-white">Date de publication</label>
+                    <label className="mb-2.5 block text-black dark:text-white">
+                      Date de publication
+                      <span className='text-meta-1'>*</span>
+                    </label>
                     <input
                       type="datetime-local"
                       name="datePost"
@@ -182,7 +200,10 @@ const Form_Offre_A = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4.5">
                   {/* Champ Date Limite */}
                   <div>
-                    <label className="mb-2.5 block text-black dark:text-white">Date limite</label>
+                    <label className="mb-2.5 block text-black dark:text-white">
+                      Date limite
+                      <span className='text-meta-1'>*</span>
+                    </label>
                     <input
                       type="datetime-local"
                       name="dateLimite"
@@ -198,7 +219,10 @@ const Form_Offre_A = () => {
 
                   {/* Champ Type de Contrat */}
                   <div>
-                    <label htmlFor="typeContrat" className="mb-2.5 block text-black dark:text-white">Type de contrat</label>
+                    <label htmlFor="typeContrat" className="mb-2.5 block text-black dark:text-white">
+                      Type de contrat
+                      <span className='text-meta-1'>*</span>
+                    </label>
                     <select
                       id="typeContrat"
                       name="typeContrat"
@@ -230,6 +254,7 @@ const Form_Offre_A = () => {
                       className="mr-2"
                     />
                     Activer l'offre
+                    <span className='text-meta-1'>*</span>
                   </label>
                 </div>
 

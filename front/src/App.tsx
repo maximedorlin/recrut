@@ -4,14 +4,11 @@ import Loader from './common/Loader';
 import PageTitle from './components/autres/PageTitle.tsx';
 import Connection from './pages/Accueil/Form_Connection.tsx';
 import DefaultLayout from './layout/DefaultLayout';
-import Settings from './pages/Dashboard/Settings.tsx';
 import Form_Utilisateur from './pages/Dashboard/Form_Utilisateur.tsx';
 import Liste_Utilisateure from './pages/Dashboard/Liste_Utilisateur.tsx';
 import Liste_Candidature from './pages/Dashboard/List_Candidature.tsx';
 import Accueil from './pages/Accueil/Accueil';
 import Accueil_d from './pages/Dashboard/Accueil_d';
-import Connection_Cand from './pages/Accueil/Form_Connection_Cand.tsx';
-import Profil from './pages/Dashboard/Form_Profil.tsx';
 import P404 from './pages/404.tsx';
 import Compte from './pages/Accueil/Form_Compte.tsx';
 import ForgotPassword from './pages/Accueil/Form_ForgotPosword.tsx';
@@ -22,6 +19,9 @@ import Mes_Infos from './pages/Accueil/Mes_Infos.tsx';
 import Liste_Question from './pages/Dashboard/Liste_Question.tsx';
 import Form_Question from './pages/Dashboard/Form_Evaluation.tsx';
 import Offre from './pages/Accueil/Form_Offre.tsx';
+import Form_Candidature from './pages/Accueil/Form_Candidature.tsx';
+import Profile from './pages/Dashboard/Form_Profile.tsx';
+import Settings from './pages/Dashboard/Settings.tsx';
 
 function App() {
 
@@ -88,16 +88,6 @@ function App() {
         />
 
         <Route
-          path="/web/Connection_Cand"
-          element={
-            <>
-              <PageTitle title="Connection_Cand | AFT_RECRUTEMENT" />
-              <Connection_Cand />
-            </>
-          }
-        />
-
-        <Route
           path="/web/postuler"
           element={
             <>
@@ -113,15 +103,6 @@ function App() {
             <Mes_Infos />
           </>
         }>
-          <Route
-            index
-            element={
-              <>
-                <PageTitle title="Profil | AFT_RECRUTEMENT" />
-                <Profil />
-              </>
-            }
-          />
           <Route
             path="Form_Question"
             element={
@@ -205,7 +186,7 @@ function App() {
         </Route>
 
         <Route path="Candidature">
-          {/* <Route
+          <Route
             path="Form_Candidature"
             element={
               <>
@@ -213,7 +194,7 @@ function App() {
                 <Form_Candidature />
               </>
             }
-          /> */}
+          />
           <Route
             path="Liste_Candidature"
             element={
@@ -226,7 +207,17 @@ function App() {
         </Route>
 
         <Route
-          path="settings"
+          path="Profile"
+          element={
+            <>
+              <PageTitle title="Profile | User" />
+              <Profile />
+            </>
+          }
+        />
+
+        <Route
+          path="Settings"
           element={
             <>
               <PageTitle title="Settings | AFT_RECRUTEMENT" />
@@ -246,25 +237,7 @@ function App() {
         />
       </Route>
 
-      <Route
-        path="Profil"
-        element={
-          <>
-            <PageTitle title="Profil | User" />
-            <Profil />
-          </>
-        }
-      />
 
-      <Route
-        path="Settings"
-        element={
-          <>
-            <PageTitle title="Settings | AFT_RECRUTEMENT" />
-            <Settings />
-          </>
-        }
-      />
     </Routes>
   );
 }

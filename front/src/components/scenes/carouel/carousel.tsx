@@ -32,7 +32,7 @@ const Carousel: React.FC = () => {
 
   // Change image every 3 seconds, unless the carousel is paused
   useEffect(() => {
-    if (isPaused) return; // If the carousel is paused, do nothing
+    if (isPaused) return; 
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>

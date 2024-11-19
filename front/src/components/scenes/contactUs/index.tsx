@@ -18,6 +18,11 @@ const ContactUs = () => {
     return (
         <section id="contactus" className="mx-auto w-5/6 pt-24 pb-32">
             {/* HEADER */}
+
+
+
+
+
             <motion.div
                 className="md:w-3/5"
                 initial="hidden"
@@ -47,69 +52,84 @@ const ContactUs = () => {
                         visible: { opacity: 1, y: 0 },
                     }}
                 >
-                    <form
-                        style={{ color: 'black' }}
-                        target="_blank"
-                        onSubmit={onSubmit}
-                        action="https://formsubmit.co/e8a5bdfa807605332f809e5656e27c6e"
-                        method="POST"
-                    >
-                        <input
-                            className={`${inputStyles} text-black`} // Ajout de la classe text-black pour le texte noir
-                            type="text"
-                            placeholder="NAME"
-                            {...register("name", {
-                                required: true,
-                                maxLength: 100,
-                            })}
-                        />
 
-                        {errors.name && (
-                            <p className="mt-1 text-primary-500 text-red">
-                                {errors.name.type === "required" && "This field is required."}
-                                {errors.name.type === "maxLength" && "Max length is 100 char."}
-                            </p>
-                        )}
+                    <form action="#">
+                        <div className="p-6.5">
+                            <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
+                                {/* Nom */}
+                                <div className="w-full xl:w-1/2">
+                                    <label className="mb-2.5 block text-black dark:text-white">
+                                        Nom
+                                        <span className="text-meta-1">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Entrez votre nom"
+                                        className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                    />
+                                </div>
 
-                        <input
-                            className={`${inputStyles} text-black`}
-                            type="text"
-                            placeholder="EMAIL"
-                            {...register("email", {
-                                required: true,
-                                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            })}
-                        />
-                        {errors.email && (
-                            <p className="mt-1 text-primary-500 text-red">
-                                {errors.email.type === "required" && "This field is required."}
-                                {errors.email.type === "pattern" && "Invalid email address."}
-                            </p>
-                        )}
+                                {/* Prénom */}
+                                <div className="w-full xl:w-1/2">
+                                    <label className="mb-2.5 block text-black dark:text-white">
+                                        Prénom
+                                        <span className="text-meta-1">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Entrez votre prénom"
+                                        className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                    />
+                                </div>
+                            </div>
 
-                        <textarea
-                           className={`${inputStyles} text-black`}
-                            placeholder="MESSAGE"
-                            rows={4}
-                            cols={50}
-                            {...register("message", {
-                                required: true,
-                                maxLength: 2000,
-                            })}
-                        />
-                        {errors.message && (
-                            <p className="mt-1 text-primary-500">
-                                {errors.message.type === "required" && "This field is required."}
-                                {errors.message.type === "maxLength" && "Max length is 2000 char."}
-                            </p>
-                        )}
+                            <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
+                                {/* Téléphone */}
+                                <div className="w-full xl:w-1/2">
+                                    <label className="mb-2.5 block text-black dark:text-white">
+                                        Téléphone
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        placeholder="Entrez votre numéro de téléphone"
+                                        className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                    />
+                                </div>
 
-                        <button
-                            type="submit"
-                            className="text-green-500 p-2 rounded-md border border-green-500 hover:bg-green-500 hover:text-white"
-                        >
-                            SUBMIT
-                        </button>
+                                {/* Email */}
+                                <div className="w-full xl:w-1/2">
+                                    <label className="mb-2.5 block text-black dark:text-white">
+                                        Email
+                                        <span className="text-meta-1">*</span>
+                                    </label>
+                                    <input
+                                        type="email"
+                                        placeholder="Entrez votre adresse e-mail"
+                                        className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Message */}
+                            <div className="mb-6">
+                                <label className="mb-2.5 block text-black dark:text-white">
+                                    Message
+                                </label>
+                                <textarea
+                                    rows={6}
+                                    placeholder="Tapez votre message"
+                                    className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                ></textarea>
+                            </div>
+
+                            {/* Bouton de soumission */}
+                            <button
+                                type="submit"
+                                className="flex ml-auto justify-center text-green-500 p-2 rounded-md border border-green-500 hover:bg-green-500 hover:text-white"
+                            >
+                                Soumettre
+                            </button>
+                        </div>
                     </form>
                 </motion.div>
 
