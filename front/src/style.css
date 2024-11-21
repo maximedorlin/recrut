@@ -1,0 +1,77 @@
+html,
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+input {
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  padding: 0px 10px;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: serif;
+  box-shadow: 0 0 20px rgb(0 0 0 / 15%);
+  border-radius: 3px;
+}
+
+thead {
+  position: relative;
+  background: #008882;
+  color: #fbfbfb;
+  border-bottom: 1px solid #afafaf;
+}
+
+table td,
+table th {
+  padding: 12px 15px;
+  text-align: center;
+  width: 280px;
+}
+
+table thead tr:last-child th {
+  padding-top: 0px;
+}
+
+table td {
+  border-bottom: 1px solid #d2d2d2;
+}
+
+table tr:first-child :first-child {
+  border-radius: 3px 0 0 0px;
+}
+
+table tr:first-child th:last-child {
+  border-radius: 0 3px 0px 0;
+}
+
+.LoadingSpinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.PaginatorRow {
+  background: #333;
+  color: #fff;
+}
+
+.Paginator {
+  display: flex;
+  gap: 16px;
+}
+
+.PaginatorButton {
+  cursor: pointer;
+}

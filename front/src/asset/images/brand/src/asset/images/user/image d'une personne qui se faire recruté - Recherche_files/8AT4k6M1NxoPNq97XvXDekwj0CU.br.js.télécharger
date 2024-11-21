@@ -1,0 +1,1 @@
+(function(){var n=document.querySelector("#b_results .b_pag .sb_pagS_bp");n&&n.addEventListener("mouseenter",function(){_w.sj_log&&sj_log("CI.Pagination","hover",n.innerText)},!0)})()
